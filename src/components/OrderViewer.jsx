@@ -14,7 +14,7 @@ export default function OrderViewer() {
   const connect = () => {
     console.log(restaurantId);
 
-    let Sock = new SockJS("http://localhost:7070/ws");
+    let Sock = new SockJS("http://localhost:9080/ws");
     stompClient = over(Sock);
     stompClient.connect({}, onConnected, onError);
   };
@@ -47,28 +47,25 @@ export default function OrderViewer() {
   };
 
   return (
-    <div className="container">
+    <div className="order-box">
       {isLoggedIn ? (
-        <div className="chat-content">
-          <h1>{a}</h1>
-          <table>
-            <thead>
-              <tr>
-                <th>Order ID</th>
-                <th>Status</th>
-                <th>With delivery</th>
-                <th>Total Price</th>
-                <th>Items:</th>
-                <th>Time</th>
-              </tr>
-            </thead>
-            <tbody>
-              {newOrders.map((o) => {
-                return <Order id={o.id} order={o} />;
-              })}
-            </tbody>
-          </table>
-        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Status</th>
+              <th>With delivery</th>
+              <th>Total Price</th>
+              <th>Items:</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            {newOrders.map((o) => {
+              return <Order id={o.id} order={o} />;
+            })}
+          </tbody>
+        </table>
       ) : (
         <Login registerRestaurant={registerRestaurant} />
       )}

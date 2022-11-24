@@ -18,7 +18,7 @@ const ChatRoom = () => {
   }, [userData]);
 
   const connect = () => {
-    let Sock = new SockJS("http://localhost:7070/ws");
+    let Sock = new SockJS("http://localhost:9080/ws");
     stompClient = over(Sock);
     stompClient.connect({}, onConnected, onError);
   };
@@ -235,7 +235,7 @@ const ChatRoom = () => {
             margin="normal"
           />
           <button type="button" onClick={registerUser}>
-            connect
+            connect to chat
           </button>
         </div>
       )}

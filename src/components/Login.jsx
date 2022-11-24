@@ -23,17 +23,18 @@ export default function Login({ registerRestaurant }) {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onChange={onChange}>
-        <input
-          placeholder="Restaurant Email"
-          required={true}
-          type="number"
-          id="restaurantId"
-        />
-        <button onClick={performLogin}>Connect</button>
-      </form>
+    <div className="container">
+      <div className="login">
+        <form onChange={onChange}>
+          <input
+            placeholder="Restaurant Email"
+            required={true}
+            type="number"
+            id="restaurantId"
+          />
+          <button onClick={performLogin}>connect to orders</button>
+        </form>
+      </div>
     </div>
   );
 }

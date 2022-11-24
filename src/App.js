@@ -5,8 +5,10 @@ import OrderViewer from "./components/OrderViewer";
 const App = () => {
   return (
     <>
+      <div>
+        <ChatRoom />
+      </div>{" "}
       <OrderViewer />
-      <ChatRoom />
     </>
   );
 };
