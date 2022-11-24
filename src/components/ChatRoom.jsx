@@ -25,7 +25,6 @@ const ChatRoom = () => {
 
   const onConnected = () => {
     setUserData({ ...userData, connected: true });
-    stompClient.subscribe("/user/1/orders", onNewOrder);
     stompClient.subscribe("/chatroom/public", onMessageReceived);
     stompClient.subscribe(
       "/user/" + userData.username + "/private",
@@ -70,9 +69,6 @@ const ChatRoom = () => {
       privateChats.set(payloadData.senderName, list);
       setPrivateChats(new Map(privateChats));
     }
-  };
-  const onNewOrder = (payload) => {
-    console.log(payload.body);
   };
 
   const onError = (err) => {
