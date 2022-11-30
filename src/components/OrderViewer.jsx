@@ -16,7 +16,7 @@ export default function OrderViewer() {
 
     let Sock = new SockJS("http://localhost:9080/ws");
     stompClient = over(Sock);
-    stompClient.connect({}, onConnected, onError);
+    stompClient.connect({ restaurantId: restaurantId }, onConnected, onError);
   };
   const registerRestaurant = (id) => {
     console.log(id);
@@ -31,7 +31,11 @@ export default function OrderViewer() {
   }, [isLoggedIn]);
 
   const onConnected = () => {
-    stompClient.subscribe(`/user/${restaurantId}/orders`, onNewOrder);
+    stompClient.subscribe(
+      `/restaurant/${restaurantId}/new-orders`,
+      onNewOrder,
+      { restaurantId: restaurantId }
+    );
   };
 
   const onError = (err) => {
@@ -62,7 +66,7 @@ export default function OrderViewer() {
           </thead>
           <tbody>
             {newOrders.map((o) => {
-              return <Order id={o.id} order={o} />;
+              return <Order id={o.id} key={o.id} order={o} />;
             })}
           </tbody>
         </table>

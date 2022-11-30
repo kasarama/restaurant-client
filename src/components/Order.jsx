@@ -9,7 +9,7 @@ export default function Order({ order }) {
       <td>{order.totalPrice}</td>
       <td>
         {order.items.map((i) => {
-          return <p> {i.quantity + " X " + i.menuItem.name} </p>;
+          return <p> {i.quantity + " X " + i.menuItemId} </p>;
         })}
       </td>
       <td>{order.createdAt}</td>
